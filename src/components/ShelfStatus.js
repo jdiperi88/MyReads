@@ -25,8 +25,7 @@ class ShelfStatus extends Component{
                                             <select onChange={(e)=>{
                                                 handleReadingChange(e,book)
                                             }}>
-                                                <option disabled selected value> -- select an option -- </option>
-                                                <option value="none">Move to...</option>
+                                                <option disabled selected value value="none">Move to...</option>
                                                 <option value="currentlyReading">Currently Reading</option>
                                                 <option value="wantToRead">Want to Read</option>
                                                 <option value="read">Read</option>
