@@ -1,3 +1,21 @@
+# Joey's MyReads Project
+* this project was used leverageing udacity's css and html along with the api functions descriped below.
+
+## To Get Started
+* Please Clone this repo to your local computer
+* then proceed to npm install to get all of the necessary dependencies.
+* After all of the depencies have installed Correctly, you can start the project by putting `npm start` in the command line.
+
+## What this project does...
+* This project allows users to track what books they are reading, want to read, and have read. 
+* The information is stored in the database so that users will not lose track of what information they have input.
+
+## How the react portion was constructed
+* I used two main components in this application, a dynamic Status componenent along with a Search Component
+* The search component allowed users to search through the database to find available books and they can choose to filter those in the right category if they have any interest through a select drop down menu
+* for details about what books are in the database, check out [SEARCH_TERMS.md](SEARCH_TERMS.md).
+
+
 # MyReads Project
 
 This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
