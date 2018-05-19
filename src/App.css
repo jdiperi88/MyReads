@@ -7,7 +7,10 @@ body {
 body, .app {
   background: white;
 }
-
+/* my css */
+.text-align{
+  text-align: center;
+}
 /* main page */
 
 .list-books-title {

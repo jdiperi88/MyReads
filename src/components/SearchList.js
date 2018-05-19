@@ -33,6 +33,7 @@ class SearchList extends Component{
               </div>
             </div>
             <div className="search-books-results">
+            {searchQuery!=='' &&
                 <ol className="books-grid">
                     {!searchError && searchResults ?
                         
@@ -67,6 +68,8 @@ class SearchList extends Component{
                     :
                     <p>No Results Found...</p>}
                 </ol>
+            }
+            {searchQuery==='' && <div className='text-align'>Please Enter a title or Author</div>}
             </div>
           </div>
         )
