@@ -14,7 +14,7 @@ class SearchList extends Component{
                 <div className="book-top">
                     <div className="book-cover" style={style}></div>
                     <div className="book-shelf-changer">
-                    <select onChange={(e)=>{
+                    <select value={book.shelf} onChange={(e)=>{
                         handleReadingChange(e,book)
                     }}>
                         <option value="none" disabled selected value>Move to...</option>
