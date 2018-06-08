@@ -8,7 +8,6 @@ import Home from './components/Home';
 class BooksApp extends React.Component {
   componentDidMount(){
     getAll().then((res)=>{
-      console.log(res)
       this.setState({
         currentlyReading: res.filter(book=>{
           return book.shelf=='currentlyReading'
@@ -25,7 +24,6 @@ class BooksApp extends React.Component {
   }
 
   componentDidUpdate(prev){
-    console.log(prev)
     getAll().then((res)=>{
       this.setState({
         currentlyReading: res.filter(book=>{
@@ -55,6 +53,7 @@ class BooksApp extends React.Component {
     let readingChoice = e.target.value
     update(book,readingChoice)
       .then(res=>{
+        console.log(res)
         let {wantToRead,currentlyReading,read} = res
         this.setState({
           currentlyReading,
