@@ -6,19 +6,49 @@ import { get, getAll, search, update } from './BooksAPI'
 import SearchList from './components/SearchList'
 import Home from './components/Home';
 class BooksApp extends React.Component {
+  state = {
+    showSearchPage: false,
+    searchQuery:'',
+    searchResults: '',
+    searchError: false,
+    currentlyReading:[],
+    wantToRead:[],
+    read:[],
+    none:[],
+    currentlyReadingTitles:[],
+    readTitles:[],
+    wantToReadTitles:[]
+  }
   componentDidMount(){
     getAll().then((res)=>{
       this.setState({
         currentlyReading: res.filter(book=>{
           return book.shelf=='currentlyReading'
         }),
+        currentlyReadingTitles: res.map((book)=>{
+          if(book.shelf == 'currentlyReading'){
+            return book.title
+          }
+        }),
         wantToRead: res.filter(book=>{
           return book.shelf=='wantToRead'
+        }),
+        wantToReadTitles: res.map((book)=>{
+          if(book.shelf == 'wantToRead'){
+            return book.title
+          }
         }),
         read: res.filter(book=>{
           return book.shelf=='read'
         }),
-        none:[]
+        readTitles: res.map(book=>{
+          if(book.shelf == 'read'){
+            return book.title
+          }
+        }),
+        none:res.filter(book=>{
+          return book.shelf !='read' && book.shelf !='currentlyReading' && book.shelf !='wantToRead';
+        })
       })
     })
   }
@@ -38,16 +68,7 @@ class BooksApp extends React.Component {
       })
     })
   }
-  state = {
-    showSearchPage: false,
-    searchQuery:'',
-    searchResults: '',
-    searchError: false,
-    currentlyReading:[],
-    wantToRead:[],
-    read:[],
-    none:[]
-  }
+
   handleReadingChange=(e, book)=>{
     console.log(e.target.value, book);
     let readingChoice = e.target.value
@@ -60,7 +81,6 @@ class BooksApp extends React.Component {
           wantToRead,
           read
         })
-
       })
   }
   handleSearchChange=(e)=>{
@@ -76,7 +96,6 @@ class BooksApp extends React.Component {
           searchResults:res,
           searchError:false
         })
-
       }else{
         this.setState({
           searchError:true
@@ -95,7 +114,10 @@ class BooksApp extends React.Component {
         searchQuery,
         wantToRead,
         currentlyReading,
-        read 
+        read,
+        wantToReadTitles,
+        currentlyReadingTitles,
+        readTitles,
     } = this.state
     return (
 
@@ -120,6 +142,9 @@ class BooksApp extends React.Component {
                     searchError={searchError}
                     searchQuery={searchQuery}
                     handleReadingChange={this.handleReadingChange}
+                    currentlyReading={currentlyReadingTitles}
+                    wantToRead={wantToReadTitles}
+                    readt={readTitles}
                   />
                 )
               }}/> 

@@ -6,15 +6,27 @@ class SearchList extends Component{
     render(){
         let { 
             book,
-            handleReadingChange
+            handleReadingChange,
+            currentlyReading,
+            wantToRead,
+            read,
+            index
         } = this.props
+        let shelf = 'none'
+        if(currentlyReading && currentlyReading.indexOf(book.title)>=0){
+            shelf = 'currentlyReading'
+        }else if(wantToRead && wantToRead.indexOf(book.title)>=0){
+            shelf = 'wantToRead'
+        }else if(read && read.indexOf(book.title)>=0){
+            shelf = 'read'
+        }
         const style = { width: 128, height: 193, backgroundImage: `url(${book.imageLinks? book.imageLinks.thumbnail:'' })` }
         return(
             <div className="book">
                 <div className="book-top">
                     <div className="book-cover" style={style}></div>
                     <div className="book-shelf-changer">
-                    <select value={book.shelf} onChange={(e)=>{
+                    <select value={book.shelf?book.shelf:shelf} onChange={(e)=>{
                         handleReadingChange(e,book)
                     }}>
                         <option value="none" disabled selected value>Move to...</option>

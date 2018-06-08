@@ -10,7 +10,10 @@ class SearchList extends Component{
             searchResults,
             searchError,
             searchQuery,
-            handleReadingChange
+            handleReadingChange,
+            currentlyReading,
+            wantToRead,
+            read
         } = this.props
         return(
             <div className="search-books">
@@ -45,6 +48,10 @@ class SearchList extends Component{
                                     <Book 
                                         handleReadingChange={handleReadingChange}
                                         book = {book}
+                                        currentlyReading={currentlyReading}
+                                        wantToRead={wantToRead}
+                                        read={read}
+                                        index={i}
                                     />
                                 </li>
                                 
