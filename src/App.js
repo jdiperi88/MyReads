@@ -59,12 +59,30 @@ class BooksApp extends React.Component {
         currentlyReading: res.filter(book=>{
           return book.shelf=='currentlyReading'
         }),
+        currentlyReadingTitles: res.map((book)=>{
+          if(book.shelf == 'currentlyReading'){
+            return book.title
+          }
+        }),
         wantToRead: res.filter(book=>{
           return book.shelf=='wantToRead'
+        }),
+        wantToReadTitles: res.map((book)=>{
+          if(book.shelf == 'wantToRead'){
+            return book.title
+          }
         }),
         read: res.filter(book=>{
           return book.shelf=='read'
         }),
+        readTitles: res.map(book=>{
+          if(book.shelf == 'read'){
+            return book.title
+          }
+        }),
+        none:res.filter(book=>{
+          return book.shelf !='read' && book.shelf !='currentlyReading' && book.shelf !='wantToRead';
+        })
       })
     })
   }
@@ -144,7 +162,7 @@ class BooksApp extends React.Component {
                     handleReadingChange={this.handleReadingChange}
                     currentlyReading={currentlyReadingTitles}
                     wantToRead={wantToReadTitles}
-                    readt={readTitles}
+                    read={readTitles}
                   />
                 )
               }}/> 

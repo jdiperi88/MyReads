@@ -40,7 +40,6 @@ class SearchList extends Component{
             {searchQuery!=='' &&
                 <ol className="books-grid">
                     {!searchError && searchResults ?
-                        
                         searchResults.map(((book, i)=>{
                             return(
                                 book.title&&

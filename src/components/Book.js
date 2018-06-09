@@ -29,7 +29,7 @@ class SearchList extends Component{
                     <select value={book.shelf?book.shelf:shelf} onChange={(e)=>{
                         handleReadingChange(e,book)
                     }}>
-                        <option value="none" disabled selected value>Move to...</option>
+                        <option  disabled selected value>Move to...</option>
                         <option value="currentlyReading">Currently Reading</option>
                         <option value="wantToRead">Want to Read</option>
                         <option value="read">Read</option>
